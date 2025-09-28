@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://5gid6ppvfuq4"]
+
+[ext_resource type="PackedScene" uid="uid://c1smgwuu0ch8l" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://7o7jwacqggm2" path="res://scenes/heidi.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://qiqno0d2h3ry" path="res://scenes/snail.tscn" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dce4feva8khfs" path="res://icon.svg" id="4_jyhfs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tbgi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(1153, 110)
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(247, 100)
+
+[node name="Heidi" parent="." instance=ExtResource("2_sugp2")]
+position = Vector2(465, 98)
+
+[node name="Area2D" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(88, 208)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(576.5, 589)
+shape = SubResource("RectangleShape2D_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(581.5, 589)
+scale = Vector2(9.0546875, 1)
+texture = ExtResource("4_jyhfs")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://qiqno0d2h3ry"]
+
+[ext_resource type="Texture2D" uid="uid://ownicbueu1w3" path="res://art/evilsnail1.png" id="1_6lcqf"]
+[ext_resource type="Script" uid="uid://d1nd2q12r2bf6" path="res://scenes/snail.gd" id="1_oqbjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lcqf"]
+size = Vector2(292, 240)
+
+[node name="Area2D" type="RigidBody2D"]
+script = ExtResource("1_oqbjf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("1_6lcqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-27, 2)
+shape = SubResource("RectangleShape2D_6lcqf")
