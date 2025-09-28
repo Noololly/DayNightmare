@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(156, 158)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Orpheus" type="RigidBody2D"]
 lock_rotation = true
 script = ExtResource("1_g2els")
 

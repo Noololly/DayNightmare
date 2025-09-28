@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckpads8h3pp55"]
+
+[ext_resource type="Script" uid="uid://cv0s1eyj0hun3" path="res://scenes/campfire.gd" id="1_54scn"]
+[ext_resource type="Texture2D" uid="uid://lvd75fpk12l2" path="res://art/campfire.png" id="1_m47ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54scn"]
+size = Vector2(285, 170)
+
+[node name="Campfire" type="Area2D"]
+script = ExtResource("1_54scn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m47ar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.5, 61)
+shape = SubResource("RectangleShape2D_54scn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

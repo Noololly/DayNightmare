@@ -11,7 +11,7 @@ func _ready():
 	# Make sure gravity_scale is correctly set (affects gravity strength)
 	gravity_scale = gravity_scale
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction := 0.0
 	
 	# Horizontal movement based on key input

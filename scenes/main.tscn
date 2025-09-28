@@ -1,34 +1,46 @@
-[gd_scene load_steps=7 format=3 uid="uid://5gid6ppvfuq4"]
+[gd_scene load_steps=10 format=3 uid="uid://5gid6ppvfuq4"]
 
 [ext_resource type="PackedScene" uid="uid://c1smgwuu0ch8l" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://vk4shv43y3cd" path="res://scenes/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://7o7jwacqggm2" path="res://scenes/heidi.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qiqno0d2h3ry" path="res://scenes/snail.tscn" id="3_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://dce4feva8khfs" path="res://icon.svg" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bpneyli2gfamx" path="res://art/cobblestone.png" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b6vvst6qjakx1" path="res://scenes/hud.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://ckpads8h3pp55" path="res://scenes/campfire.tscn" id="6_tefeu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(1153, 110)
+size = Vector2(1153, 117)
 
 [node name="Node" type="Node"]
+script = ExtResource("1_o6xl0")
 
-[node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(247, 100)
+[node name="Orpheus" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(380, 167)
+scale = Vector2(1.0044643, 1)
 
 [node name="Heidi" parent="." instance=ExtResource("2_sugp2")]
-position = Vector2(465, 98)
+position = Vector2(567, 152)
 
 [node name="Area2D" parent="." instance=ExtResource("3_jyhfs")]
-position = Vector2(88, 208)
+position = Vector2(123, 412)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_tbgi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(576.5, 589)
+position = Vector2(576.5, 585.5)
 shape = SubResource("RectangleShape2D_tefeu")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(581.5, 589)
-scale = Vector2(9.0546875, 1)
-texture = ExtResource("4_jyhfs")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_o6xl0")
+
+[node name="HUD" parent="." instance=ExtResource("5_tbgi4")]
+
+[node name="Campfire" parent="." instance=ExtResource("6_tefeu")]
+position = Vector2(1025, 379)
+
+[connection signal="death" from="Campfire" to="." method="_on_campfire_death"]
